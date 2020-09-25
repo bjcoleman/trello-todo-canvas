@@ -15,7 +15,6 @@ class RedisHistoryDB:
 
     def register_assignment(self, assignment):
         key = '{}:{}'.format(assignment.course_id, assignment.assignment_id)
-        print('adding {}'.format(key))
         self.db.sadd('assignments', key)
 
     def is_registered(self, assignment):
