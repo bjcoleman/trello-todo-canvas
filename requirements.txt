@@ -1,3 +1,4 @@
 py-trello
 redis
 canvasapi
+python-dotenv
