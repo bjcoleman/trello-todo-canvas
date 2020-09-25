@@ -3,6 +3,7 @@ import os
 import datetime
 import logging
 from collections import namedtuple
+import time
 
 import dotenv
 from canvasapi import Canvas
@@ -103,9 +104,13 @@ def add_to_db(assignment):
 
 
 def go():
-    update_trello(get_past_assignments(get_watched_courses()))
+    while True:
+        update_trello(get_past_assignments(get_watched_courses()))
+        time.sleep(3600)
 
 
 if __name__ == '__main__':
+    # Sleep for a minute to make sure the OS/network are ready
+    time.sleep(60)
     dotenv.load_dotenv()
     go()
